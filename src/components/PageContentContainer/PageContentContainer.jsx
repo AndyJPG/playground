@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TestingPlayground from "../../playgrounds/TestingPlayground/TestingPlayground";
+import PlaygroundContainer from "../PlaygroundContainer/PlaygroundContainer";
 
 class PageContentContainer extends Component {
 
@@ -10,8 +11,9 @@ class PageContentContainer extends Component {
                     <h1 className="h3 mb-0 text-gray-800">Playgrounds</h1>
                 </div>
                 <div className="row">
-                    <TestingPlayground/>
-                    <TestingPlayground/>
+                    <PlaygroundContainer
+                        name="Testing Playground"
+                        size="col-xl-6 col-lg-5"><TestingPlayground/></PlaygroundContainer>
                 </div>
             </div>
         );

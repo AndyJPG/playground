@@ -1,8 +1,11 @@
 import React from 'react';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+
+    const sidebarClasses = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion";
+
     return (
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul className={sidebarClasses} id="accordionSidebar">
             <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div className="sidebar-brand-icon rotate-n-15">
                     <i className="fas fa-laugh-wink"/>
@@ -10,7 +13,7 @@ const Sidebar = () => {
                 <div className="sidebar-brand-text mx-3">ANDY'S PLAYGROUND</div>
             </a>
 
-            <hr className="sidebar-divider my-0" />
+            <hr className="sidebar-divider my-0"/>
 
             <li className="nav-item active">
                 <a className="nav-link" href="/">
@@ -19,7 +22,9 @@ const Sidebar = () => {
             </li>
 
             <div className="text-center d-none d-md-inline">
-                <button className="rounded-circle border-0" id="sidebarToggle"/>
+                <button
+                    className="rounded-circle border-0"
+                    id="sidebarToggle"/>
             </div>
 
             <div className="sidebar-card d-none d-lg-flex">

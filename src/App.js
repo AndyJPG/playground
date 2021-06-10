@@ -9,10 +9,10 @@ class App extends Component {
     render() {
         return (
             <div id="wrapper">
-                <Sidebar/>
+                <Sidebar />
                 <div id="content-wrapper" className="d-flex flex-column">
                     <div id="content">
-                        <Navbar/>
+                        <Navbar />
                         <PageContentContainer/>
                     </div>
                 </div>
