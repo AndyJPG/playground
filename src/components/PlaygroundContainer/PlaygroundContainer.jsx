@@ -9,9 +9,13 @@ const PlaygroundContainer = (props) => {
                     <h6 className="m-0 font-weight-bold text-primary">{props.name}</h6>
                 </div>
                 <div className="card-body">
-                    <div className="chart-area">
-                        {props.children}
-                    </div>
+                    {props.desc}
+                    <br />
+                    <br />
+                    {props.children}
+                </div>
+                <div className="card-footer text-muted">
+                    - Last update : {props.lastUpdate}
                 </div>
             </div>
         </div>

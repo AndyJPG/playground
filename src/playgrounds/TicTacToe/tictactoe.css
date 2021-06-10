@@ -1,0 +1,45 @@
+.tic-tac-toe ol, .tic-tac-toe ul {
+    padding-left: 30px;
+}
+
+.tic-tac-toe .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.tic-tac-toe .status {
+    margin-bottom: 10px;
+}
+
+.tic-tac-toe .square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+}
+
+.tic-tac-toe .square:focus {
+    outline: none;
+}
+
+.tic-tac-toe .kbd-navigation .square:focus {
+    background: #ddd;
+}
+
+.tic-tac-toe .game {
+    display: flex;
+    flex-direction: row;
+}
+
+.tic-tac-toe .game-info {
+    margin-left: 20px;
+}

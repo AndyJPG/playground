@@ -1,8 +1,27 @@
-import React, { Component } from 'react';
-import TestingPlayground from "../../playgrounds/TestingPlayground/TestingPlayground";
-import PlaygroundContainer from "../PlaygroundContainer/PlaygroundContainer";
+import React, {Component} from 'react';
+
+// Playgrounds
+import TicTacToe from "../../playgrounds/TicTacToe/TicTacToe";
+
+// Components
+import PlaygroundsContainer from "../PlaygroundsContainer/PlaygroundsContainer";
 
 class PageContentContainer extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            playgrounds: [
+                {
+                    name: "Tic Tac Toe",
+                    desc: "Tic Tac Toe game built by following React official tutorial",
+                    lastUpdate: "10/06/2021",
+                    size: "col-xl-6 col-lg-5",
+                    playground: <TicTacToe />
+                }
+            ]
+        }
+    }
 
     render() {
         return (
@@ -10,11 +29,9 @@ class PageContentContainer extends Component {
                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 className="h3 mb-0 text-gray-800">Playgrounds</h1>
                 </div>
-                <div className="row">
-                    <PlaygroundContainer
-                        name="Testing Playground"
-                        size="col-xl-6 col-lg-5"><TestingPlayground/></PlaygroundContainer>
-                </div>
+
+                <PlaygroundsContainer
+                    playgrounds={this.state.playgrounds}/>
             </div>
         );
     }
