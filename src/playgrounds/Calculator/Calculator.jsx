@@ -62,6 +62,25 @@ class Calculator extends React.Component {
             if (currentValue === '0') {
                 return;
             }
+
+            let result = currentValue;
+
+            if (operator === '±') {
+                if (parseFloat(currentValue) < 0) {
+                    result = currentValue.substring(1, currentValue.length);
+                } else {
+                    result = "-" + currentValue;
+                }
+            }
+
+            if (operator === '%') {
+                const value = parseFloat(currentValue) / 100;
+                result = value.toString();
+            }
+
+            this.setState({
+                value: result
+            })
         }
 
         // Digit keys
@@ -74,6 +93,10 @@ class Calculator extends React.Component {
 
             // Check if input is still in initial status
             if (currentValue !== '0' && !this.state.reset) {
+                value = currentValue + value;
+            }
+
+            if (currentValue === '0' && operator === '.') {
                 value = currentValue + value;
             }
 
@@ -106,18 +129,44 @@ class Calculator extends React.Component {
                 return;
             }
 
+            let prevNumber = parseFloat(previousValue);
+            let currentNumber = parseFloat(currentValue);
+            let needByPass = false;
+
+            if (prevNumber > 0 && prevNumber < 1 && currentNumber > 0 && currentNumber < 1) {
+                prevNumber = prevNumber * Math.pow(10, 5);
+                currentNumber = currentNumber * Math.pow(10, 5);
+                needByPass = true;
+            }
+
             switch (this.state.operator) {
                 case '+':
-                    result = parseFloat(previousValue) + parseFloat(currentValue);
+                    result = prevNumber + currentNumber;
+                    if (needByPass) {
+                        result = result / Math.pow(10, 5);
+                        needByPass = false;
+                    }
                     break;
                 case '-':
-                    result = parseFloat(previousValue) - parseFloat(currentValue);
+                    result = prevNumber - currentNumber;
+                    if (needByPass) {
+                        result = result / Math.pow(10, 5);
+                        needByPass = false;
+                    }
                     break;
                 case 'x':
-                    result = parseFloat(previousValue) * parseFloat(currentValue);
+                    result = prevNumber * currentNumber;
+                    if (needByPass) {
+                        result = result / Math.pow(10, 10);
+                        needByPass = false;
+                    }
                     break;
                 case '÷':
-                    result = parseFloat(previousValue) / parseFloat(currentValue);
+                    if (needByPass) {
+                        result = result / Math.pow(10, 10);
+                        needByPass = false;
+                    }
+                    result = prevNumber / currentNumber;
                     break;
                 default:
                     break;
@@ -188,9 +237,10 @@ class Calculator extends React.Component {
                     )}
                 </div>
                 <p>Operation:</p>
-                <p>Current
-                    value: {this.state.value} Operator: {this.state.operator === null ? "null" : this.state.operator} Previous
-                    value: {this.state.previousValue === null ? "null" : this.state.previousValue}</p>
+                <p>Previous
+                    value: <b className="text-danger">{this.state.previousValue === null ? "null" : this.state.previousValue}</b> |
+                    Operator: <b className="text-danger">{this.state.operator === null ? "null" : this.state.operator}</b> | Current
+                    value: <b className="text-danger">{this.state.value}</b> </p>
             </div>
         );
     }
