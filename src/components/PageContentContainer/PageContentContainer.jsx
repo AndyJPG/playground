@@ -16,7 +16,7 @@ class PageContentContainer extends Component {
                 {
                     name: "Calculator",
                     desc: "Simple calculator like the one in iPhone",
-                    lastUpdate: "10/06/2021",
+                    lastUpdate: "15/06/2021",
                     size: "col-xl-6 col-lg-6",
                     playground: <Calculator />
                 },
