@@ -39,11 +39,8 @@ class Calculator extends React.Component {
     _onClickHandler = (operator) => {
         const currentValue = this.state.value;
 
+        // Cancel all data or just current value
         if (["AC", "C"].includes(operator)) {
-            if (currentValue === '0') {
-                return;
-            }
-
             if (operator === 'C') {
                 this.setState({
                     value: '0'
@@ -53,7 +50,7 @@ class Calculator extends React.Component {
             if (operator === 'AC') {
                 this.setState({
                     value: '0',
-                    previousNumber: null,
+                    previousValue: null,
                     operator: null,
                     reset: false
                 })
@@ -88,13 +85,18 @@ class Calculator extends React.Component {
 
         // Operation keys
         if (this.state.operatorKeys.includes(operator)) {
-            if (currentValue === '0') {
+            // equal can't be trigger by empty operator
+            if (operator === "=" && this.state.operator === null) {
+                this.setState({
+                    reset: true
+                });
                 return;
             }
 
             let result;
             const previousValue = this.state.previousValue;
 
+            // If no previous value push it to previous value
             if (previousValue === null) {
                 this.setState({
                     operator: operator,
@@ -104,12 +106,21 @@ class Calculator extends React.Component {
                 return;
             }
 
-            if (operator === "=" && (this.state.reset || previousValue === null)) {
-                return;
-            }
-
-            if (this.state.operator === '+') {
-                result = parseFloat(currentValue) + parseFloat(previousValue);
+            switch (this.state.operator) {
+                case '+':
+                    result = parseFloat(previousValue) + parseFloat(currentValue);
+                    break;
+                case '-':
+                    result = parseFloat(previousValue) - parseFloat(currentValue);
+                    break;
+                case 'x':
+                    result = parseFloat(previousValue) * parseFloat(currentValue);
+                    break;
+                case '÷':
+                    result = parseFloat(previousValue) / parseFloat(currentValue);
+                    break;
+                default:
+                    break;
             }
 
             result = result.toString();
@@ -126,7 +137,7 @@ class Calculator extends React.Component {
     render() {
         const cancelButton = this.state.value === '0' ? "AC" : "C";
 
-        console.log(this.state.value, this.state.operator, this.state.previousValue, this.state.reset);
+        console.log(this.state.previousValue, this.state.operator, this.state.value, this.state.reset);
         return (
             // <div className="calculator">
             //     <div className="calculator-keypad">
