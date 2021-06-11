@@ -116,7 +116,7 @@ class Calculator extends React.Component {
                 value = '.';
             }
 
-            if (operator === '●' && currentValue.includes(operator)) {
+            if (operator === '●' && currentValue.includes('.')) {
                 return;
             }
 
