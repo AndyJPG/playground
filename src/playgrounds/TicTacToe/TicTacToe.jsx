@@ -75,8 +75,6 @@ class TicTacToe extends Component {
             status = "Next player: " + (this.state.xIsNext ? 'X' : 'O');
         }
 
-        const btnClasses = "btn " + (this.state.stepNumber === 0 ? "btn-secondary" : "btn-success");
-
         return (
             <div className="tic-tac-toe">
                 <div className="game">
