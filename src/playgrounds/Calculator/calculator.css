@@ -69,18 +69,26 @@
 }
 
 .calculator input {
-    width: 100%;
-    background-color: black;
-    color: white;
     border: none;
+    position: relative;
+    font-size: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: transparent;
     direction: rtl;
+    z-index: 10;
 }
 
 .calculator input:focus {
     outline: none;
 }
 
+.calculator .auto-scaling-text {
+    display: inline-block;
+}
+
 .calculator .calculator-display .auto-scaling-text {
+    margin: 0 20px;
     padding: 0 30px;
     position: absolute;
     right: 0;

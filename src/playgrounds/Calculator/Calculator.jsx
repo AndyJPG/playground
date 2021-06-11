@@ -2,6 +2,7 @@ import './calculator.css';
 import React from 'react';
 
 import CalculatorKey from "./components/CalculatorKey/CalculatorKey";
+import AutoScalingText from "./components/AutoScalingText/AutoScalingText";
 
 class Calculator extends React.Component {
     constructor(props) {
@@ -12,30 +13,33 @@ class Calculator extends React.Component {
             operator: null,
             reset: false,
             functionKeys: [
-                { operator: "±", className: "key-sign col-4" },
-                { operator: "%", className: "key-percent col-4" },
+                {operator: "±", className: "key-sign col-4"},
+                {operator: "%", className: "key-percent col-4"},
             ],
             digitKeys: [
-                { operator: "0", className: "key-0 col-8" },
-                { operator: "●", className: "key-dot col-4" },
-                { operator: "1", className: "key-1 col-4" },
-                { operator: "2", className: "key-2 col-4" },
-                { operator: "3", className: "key-3 col-4" },
-                { operator: "4", className: "key-4 col-4" },
-                { operator: "5", className: "key-5 col-4" },
-                { operator: "6", className: "key-6 col-4" },
-                { operator: "7", className: "key-7 col-4" },
-                { operator: "8", className: "key-8 col-4" },
-                { operator: "9", className: "key-9 col-4" }
+                {operator: "0", className: "key-0 col-8"},
+                {operator: "●", className: "key-dot col-4"},
+                {operator: "1", className: "key-1 col-4"},
+                {operator: "2", className: "key-2 col-4"},
+                {operator: "3", className: "key-3 col-4"},
+                {operator: "4", className: "key-4 col-4"},
+                {operator: "5", className: "key-5 col-4"},
+                {operator: "6", className: "key-6 col-4"},
+                {operator: "7", className: "key-7 col-4"},
+                {operator: "8", className: "key-8 col-4"},
+                {operator: "9", className: "key-9 col-4"}
             ],
             operatorKeys: [
-                { operator: "÷", className: "key-divide" },
-                { operator: "x", className: "key-multiply" },
-                { operator: "-", className: "key-subtract" },
-                { operator: "+", className: "key-add" },
-                { operator: "=", className: "key-equals" }
+                {operator: "÷", className: "key-divide"},
+                {operator: "x", className: "key-multiply"},
+                {operator: "-", className: "key-subtract"},
+                {operator: "+", className: "key-add"},
+                {operator: "=", className: "key-equals"}
             ]
         }
+    }
+
+    componentDidMount() {
     }
 
     _onchangeHandler = (e) => {
@@ -107,6 +111,10 @@ class Calculator extends React.Component {
         // Digit keys
         if (this.state.digitKeys.find(element => element.operator === operator)) {
             let value = operator;
+
+            if (value === '●') {
+                value = '.';
+            }
 
             if (operator === '●' && currentValue.includes(operator)) {
                 return;
@@ -207,17 +215,14 @@ class Calculator extends React.Component {
     render() {
         const cancelButton = this.state.value === '0' ? "AC" : "C";
 
-        console.log(this.state.previousValue, this.state.operator, this.state.value, this.state.reset);
         return (
             <div>
                 <div className="calculator">
-                    <div className="calculator-display">
-                        {/*TODO: Need to scale down text size when too much number and put comma at every 3rd characters*/}
-                        <input
-                            type="text"
-                            value={this.state.value}
-                            onChange={this._onchangeHandler}/>
-                    </div>
+
+                    <AutoScalingText
+                        changed={this._onchangeHandler}
+                        value={this.state.value} />
+
                     <div className="calculator-keypad">
                         <div className="col-9 input-keys">
                             <div className="function-keys">
@@ -258,13 +263,15 @@ class Calculator extends React.Component {
                 </div>
                 <div>
                     <br/>
-                    <p>Operation:<br/>Previous
-                        value: <b
-                            className="text-danger">{this.state.previousValue === null ? "null" : this.state.previousValue}</b> |
+                    <p>Operation:
+                        <br/>
+                        Previous value: <b
+                            className="text-danger">{this.state.previousValue === null ? "null" : this.state.previousValue}</b>
+                        <br/>
                         Operator: <b
-                            className="text-danger">{this.state.operator === null ? "null" : this.state.operator}</b> |
-                        Current
-                        value: <b className="text-danger">{this.state.value}</b></p>
+                            className="text-danger">{this.state.operator === null ? "null" : this.state.operator}</b>
+                        <br/>
+                        Current value: <b className="text-danger">{this.state.value}</b></p>
                 </div>
             </div>
         );
