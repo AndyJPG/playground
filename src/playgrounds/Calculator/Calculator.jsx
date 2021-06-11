@@ -11,9 +11,30 @@ class Calculator extends React.Component {
             previousValue: null,
             operator: null,
             reset: false,
-            functionKeys: ["±", "%"],
-            digitKeys: ["0", ".", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-            operatorKeys: ["÷", "x", "-", "+", "="]
+            functionKeys: [
+                { operator: "±", className: "key-sign" },
+                { operator: "%", className: "key-percent" },
+            ],
+            digitKeys: [
+                { operator: "0", className: "key-0" },
+                { operator: "●", className: "key-dot" },
+                { operator: "1", className: "key-1" },
+                { operator: "2", className: "key-2" },
+                { operator: "3", className: "key-3" },
+                { operator: "4", className: "key-4" },
+                { operator: "5", className: "key-5" },
+                { operator: "6", className: "key-6" },
+                { operator: "7", className: "key-7" },
+                { operator: "8", className: "key-8" },
+                { operator: "9", className: "key-9" }
+            ],
+            operatorKeys: [
+                { operator: "÷", className: "key-divide" },
+                { operator: "x", className: "key-multiply" },
+                { operator: "-", className: "key-subtract" },
+                { operator: "+", className: "key-add" },
+                { operator: "=", className: "key-equals" }
+            ]
         }
     }
 
@@ -188,59 +209,62 @@ class Calculator extends React.Component {
 
         console.log(this.state.previousValue, this.state.operator, this.state.value, this.state.reset);
         return (
-            // <div className="calculator">
-            //     <div className="calculator-keypad">
-            //         <div className="input-keys">
-            //             <div className="function-keys">
-            //
-            //             </div>
-            //             <div className="digit-keys">
-            //
-            //             </div>
-            //         </div>
-            //         <div className="operator-keys">
-            //
-            //         </div>
-            //     </div>
-            // </div>
-            <div className="calculator">
-                <input
-                    type="text"
-                    value={this.state.value}
-                    onChange={this._onchangeHandler}/>
-                <div>
-                    <CalculatorKey
-                        key={cancelButton}
-                        click={() => this._onClickHandler(cancelButton)}
-                        operator={cancelButton}/>
-                    {this.state.functionKeys.map((operator) =>
-                        <CalculatorKey
-                            key={operator}
-                            click={() => this._onClickHandler(operator)}
-                            operator={operator}/>
-                    )}
+            <div>
+                <div className="calculator">
+                    <div className="calculator-display">
+                        <input
+                            type="text"
+                            value={this.state.value}
+                            onChange={this._onchangeHandler}/>
+                    </div>
+                    <div className="calculator-keypad">
+                        <div className="input-keys">
+                            <div className="function-keys">
+                                <CalculatorKey
+                                    className="key-clear"
+                                    key={cancelButton}
+                                    click={() => this._onClickHandler(cancelButton)}
+                                    operator={cancelButton}/>
+                                {this.state.functionKeys.map((operator) =>
+                                    <CalculatorKey
+                                        className={operator.className}
+                                        key={operator.operator}
+                                        click={() => this._onClickHandler(operator.operator)}
+                                        operator={operator.operator}/>
+                                )}
+                            </div>
+                            <div className="digit-keys">
+                                {this.state.digitKeys.map((operator) =>
+                                    <CalculatorKey
+                                        className={operator.className}
+                                        key={operator.operator}
+                                        click={() => this._onClickHandler(operator.operator)}
+                                        operator={operator.operator}/>
+                                )}
+                            </div>
+                        </div>
+                        <div className="operator-keys">
+                            {this.state.operatorKeys.map((operator) =>
+                                <CalculatorKey
+                                    className={operator.className}
+                                    key={operator.operator}
+                                    click={() => this._onClickHandler(operator.operator)}
+                                    operator={operator.operator}/>
+                            )}
+                        </div>
+                    </div>
+
                 </div>
                 <div>
-                    {this.state.digitKeys.map((operator) =>
-                        <CalculatorKey
-                            key={operator}
-                            click={() => this._onClickHandler(operator)}
-                            operator={operator}/>
-                    )}
+                    <br/>
+                    <p>Operation:<br/>Previous
+                        value: <b
+                            className="text-danger">{this.state.previousValue === null ? "null" : this.state.previousValue}</b> |
+                        Operator: <b
+                            className="text-danger">{this.state.operator === null ? "null" : this.state.operator}</b> |
+                        Current
+                        value: <b className="text-danger">{this.state.value}</b></p>
                 </div>
-                <div>
-                    {this.state.operatorKeys.map((operator) =>
-                        <CalculatorKey
-                            key={operator}
-                            click={() => this._onClickHandler(operator)}
-                            operator={operator}/>
-                    )}
-                </div>
-                <p>Operation:</p>
-                <p>Previous
-                    value: <b className="text-danger">{this.state.previousValue === null ? "null" : this.state.previousValue}</b> |
-                    Operator: <b className="text-danger">{this.state.operator === null ? "null" : this.state.operator}</b> | Current
-                    value: <b className="text-danger">{this.state.value}</b> </p>
             </div>
         );
     }
