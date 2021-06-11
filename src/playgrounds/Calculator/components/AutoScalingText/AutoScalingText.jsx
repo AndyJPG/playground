@@ -34,7 +34,8 @@ class AutoScalingText extends Component {
         if (displayValue.includes(".")) {
             const splitValue = displayValue.split(".");
             const valueOne = splitValue[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            displayValue = valueOne + "." + splitValue[-1];
+            displayValue = valueOne + "." + splitValue[1];
+            console.log(splitValue[1])
         } else {
             displayValue = displayValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
