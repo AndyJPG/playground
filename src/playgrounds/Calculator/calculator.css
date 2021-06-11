@@ -1,3 +1,19 @@
+.calculator .col-1,
+.calculator .col-2,
+.calculator .col-3,
+.calculator .col-4,
+.calculator .col-5,
+.calculator .col-6,
+.calculator .col-7,
+.calculator .col-8,
+.calculator .col-9,
+.calculator .col-10,
+.calculator .col-11,
+.calculator .col-12
+{
+    padding: 0;
+}
+
 .calculator button {
     display: block;
     background: none;
@@ -120,6 +136,7 @@
     font-size: 0.75em;
 }
 .calculator .operator-keys .calculator-key {
+    width: 100%;
     color: white;
     border-right: 0;
     font-size: 3em;
