@@ -30,6 +30,14 @@ class AutoScalingText extends Component {
 
     render() {
         const { scale } = this.state;
+        let displayValue = this.props.value;
+        if (displayValue.includes(".")) {
+            const splitValue = displayValue.split(".");
+            const valueOne = splitValue[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            displayValue = valueOne + "." + splitValue[-1];
+        } else {
+            displayValue = displayValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
         return (
             <div ref={this.state.availableRef} className="calculator-display">
@@ -40,7 +48,7 @@ class AutoScalingText extends Component {
                 <div
                     className="auto-scaling-text"
                     style={{transform: `scale(${scale}, ${scale})`}}
-                     ref={this.state.actualRef}>{this.props.value}</div>
+                     ref={this.state.actualRef}>{displayValue}</div>
             </div>
         );
     }
