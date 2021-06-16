@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 // Playgrounds
 import TicTacToe from "../../playgrounds/TicTacToe/TicTacToe";
 import Calculator from "../../playgrounds/Calculator/Calculator";
+import EmojiSearch from "../../playgrounds/EmojiSearch/EmojiSearch";
 
 // Components
 import PlaygroundsContainer from "../PlaygroundsContainer/PlaygroundsContainer";
@@ -13,6 +14,13 @@ class PageContentContainer extends Component {
         super(props);
         this.state = {
             playgrounds: [
+                {
+                    name: "Emoji Search",
+                    desc: "Search emoji with words like Love or Happy",
+                    lastUpdate: "20/06/2021",
+                    size: "col-xl-12 col-lg-12",
+                    playground: <EmojiSearch />
+                },
                 {
                     name: "Calculator",
                     desc: "Simple calculator like the one in iPhone",
