@@ -16,7 +16,7 @@ class PageContentContainer extends Component {
             playgrounds: [
                 {
                     name: "Emoji Search",
-                    desc: "Search emoji with words like Love or Happy",
+                    desc: "Search emoji with words like Love or Smiling",
                     lastUpdate: "20/06/2021",
                     size: "col-xl-12 col-lg-12",
                     playground: <EmojiSearch />

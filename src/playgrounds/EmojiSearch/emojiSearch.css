@@ -2,3 +2,15 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.emoji-container button {
+    font-size: 2.5em;
+    border: none;
+    background-color: transparent;
+}
+
+@media only screen and (min-device-width: 812px) {
+    .emoji-container button {
+        font-size: 4em;
+    }
+}

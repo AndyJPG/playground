@@ -4,7 +4,10 @@ const EmojiList = (props) => {
     return (
         <div className="emoji-container">
             {props.emojiList.map((emoji) => {
-                return <button onClick={() => console.log(emoji.character)} key={emoji.unicodeName}>{emoji.character}</button>
+                if (emoji.character !== "🥲") {
+                    return <button className="col-3 col-sm-3 col-md-2 col-lg-2" onClick={() => console.log(emoji.character)} key={emoji.unicodeName}>{emoji.character}</button>
+                }
+                return null;
             })}
         </div>
     );
