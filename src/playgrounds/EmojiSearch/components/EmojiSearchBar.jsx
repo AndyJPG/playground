@@ -1,21 +1,24 @@
 import React from 'react';
+import Spinner from "./Spinner";
 
 const EmojiSearchBar = (props) => {
     return (
         <div>
-            <form className="form-inline my-2 my-lg-0">
+            <form className="input-group mb-3">
                 <input
                     value={props.value}
                     onChange={props.changed}
-                    className="form-control mr-sm-2"
-                    type="search"
-                    placeholder="Search Emoji"
-                    aria-label="Search" />
-                    <button
-                        onClick={props.search}
-                        className="btn btn-outline-success my-2 my-sm-0"
-                        type="submit"
-                        >Search</button>
+                    type="text"
+                    className="form-control"
+                    placeholder=""
+                    aria-label="Example text with button addon"
+                    aria-describedby="button-addon1" />
+                <button
+                    onClick={props.search}
+                    className="btn btn-outline-secondary"
+                    type="submit"
+                    id="button-addon1">Search</button>
+                {props.isLoaded ? null : <Spinner/>}
             </form>
         </div>
     );

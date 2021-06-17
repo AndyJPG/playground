@@ -6,6 +6,7 @@ import './emojiSearch.css';
 // Components
 import EmojiList from "./components/EmojiList";
 import EmojiSearchBar from "./components/EmojiSearchBar";
+import Spinner from "./components/Spinner";
 
 class EmojiSearch extends Component {
     constructor(props) {
@@ -67,11 +68,11 @@ class EmojiSearch extends Component {
         return (
             <div className="emoji-search">
                 <EmojiSearchBar
+                    isLoaded={isLoaded}
                     value={this.state.keyword}
                     changed={this._searchOnchangeHandler}
                     search={this._searchClickHandler}/>
-
-                {isLoaded ? result : <p>Loading...</p>}
+                {isLoaded ? result : null}
                 {error ? <p>error</p> : null}
             </div>
         );
