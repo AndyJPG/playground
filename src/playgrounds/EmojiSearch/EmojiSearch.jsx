@@ -60,8 +60,9 @@ class EmojiSearch extends Component {
     render() {
         const {error, isLoaded, searchResult, searched} = this.state;
         let result = null;
+        const emojiNotFound = <p style={{textAlign: "center"}}><span style={{fontSize: "2em"}}>😥</span> Emoji not found</p>;
         if (searched) {
-            result = searchResult.length === 0 ? <p>Emoji not found</p> :
+            result = searchResult.length === 0 ? emojiNotFound :
                 <EmojiList emojiList={searchResult}/>;
         }
 
