@@ -8,6 +8,7 @@ class AutoScalingText extends Component {
         actualRef: React.createRef()
     };
 
+    // Learn how it is updated
     componentDidUpdate() {
         console.log('did update');
         const { scale } = this.state;

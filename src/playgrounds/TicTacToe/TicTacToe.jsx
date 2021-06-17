@@ -100,7 +100,7 @@ class TicTacToe extends Component {
                             className="btn btn-secondary" disabled={true}>Restart</button> :
                         <button
                             onClick={this._restartHandler}
-                            className="btn btn-success">Restart</button>
+                            className="btn btn-danger">Restart</button>
                 }
             </div>
         )
