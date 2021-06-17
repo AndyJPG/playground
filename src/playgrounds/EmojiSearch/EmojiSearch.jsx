@@ -31,7 +31,8 @@ class EmojiSearch extends Component {
         });
     };
 
-    async _searchClickHandler() {
+    async _searchClickHandler(e) {
+        e.preventDefault();
         const searchUrl = this.state.emojiSearchUrl + this.state.keyword + this.state.accessKey;
 
         await this.setState({

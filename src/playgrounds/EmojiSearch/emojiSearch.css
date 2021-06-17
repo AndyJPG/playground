@@ -3,15 +3,53 @@
     flex-wrap: wrap;
 }
 
+.emoji-container > div {
+    padding: 0;
+}
+
 .emoji-container button {
+    z-index: 5;
     font-size: 2.5em;
     padding: 0;
+    width: 100%;
     border: none;
     background-color: transparent;
 }
 
 .emoji-container button:focus {
-    background-color: gray;
+    background-color: #669AE1;
+}
+
+.emoji-container button:focus ~ .copied-badge {
+    transition-duration: 180ms;
+    transform: translate3d(0.08361px, -75px, 0);
+    z-index: 1;
+}
+
+.emoji-container .copied-badge {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    z-index: -1;
+
+    background: #EEEEEE;
+    border-radius: 100px 100px;
+    padding: 3px 10px;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform ease-out 200ms;
+    transition: -webkit-transform ease-out 200ms;
+    transition:
+
+            ease-out 200ms, -webkit-transform ease-out 200ms;
+}
+
+.emoji-container .blue {
+    background-color: #669AE1;
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 
 @media only screen and (min-device-width: 812px) {

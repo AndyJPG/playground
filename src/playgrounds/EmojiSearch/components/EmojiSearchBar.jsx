@@ -3,7 +3,7 @@ import React from 'react';
 const EmojiSearchBar = (props) => {
     return (
         <div>
-            <div className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0">
                 <input
                     value={props.value}
                     onChange={props.changed}
@@ -14,8 +14,9 @@ const EmojiSearchBar = (props) => {
                     <button
                         onClick={props.search}
                         className="btn btn-outline-success my-2 my-sm-0"
+                        type="submit"
                         >Search</button>
-            </div>
+            </form>
         </div>
     );
 };
