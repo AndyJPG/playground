@@ -73,6 +73,8 @@ class EmojiSearch extends Component {
                     changed={this._searchOnchangeHandler}
                     search={this._searchClickHandler}/>
                 {isLoaded ? result : null}
+                <p>This emoji search tool uses API provided by emoji-api.com.</p>
+                <a href="https://emoji-api.com/">Visit Emoji API website →</a>
                 {error ? <p>error</p> : null}
             </div>
         );

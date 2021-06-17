@@ -10,7 +10,7 @@ const EmojiList = (props) => {
         <div className="emoji-container">
             {props.emojiList.map((emoji) => {
                 if (emoji.character !== "🥲" && !/\d/.test(emoji.unicodeName)) {
-                    return <div key={emoji.unicodeName} className="col-3 col-sm-3 col-md-2 col-lg-2">
+                    return <div key={emoji.unicodeName}>
                         <button
                             onClick={() => _copyClickHandler(emoji.character)}
                             >{emoji.character}</button>
