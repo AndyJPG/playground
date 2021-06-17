@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 // Style
 import './emojiSearch.css';
@@ -56,10 +56,11 @@ class EmojiSearch extends Component {
     };
 
     render() {
-        const { error, isLoaded, searchResult, searched } = this.state;
+        const {error, isLoaded, searchResult, searched} = this.state;
         let result = null;
         if (searched) {
-            result = searchResult.length === 0 ? <p>Emoji not found</p> : <EmojiList emojiList={searchResult}/>;
+            result = searchResult.length === 0 ? <p>Emoji not found</p> :
+                <EmojiList emojiList={searchResult}/>;
         }
 
         return (
