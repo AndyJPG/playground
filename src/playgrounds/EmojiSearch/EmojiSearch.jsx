@@ -6,7 +6,6 @@ import './emojiSearch.css';
 // Components
 import EmojiList from "./components/EmojiList";
 import EmojiSearchBar from "./components/EmojiSearchBar";
-import Spinner from "./components/Spinner";
 
 class EmojiSearch extends Component {
     constructor(props) {
