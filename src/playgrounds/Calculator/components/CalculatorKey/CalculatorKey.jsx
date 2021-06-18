@@ -11,4 +11,5 @@ const CalculatorKey = (props) => {
     )
 };
 
-export default CalculatorKey;
+// Uses react memo to prevent unnecessary re-rendering of every keys
+export default React.memo(CalculatorKey);
