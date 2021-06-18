@@ -24,13 +24,12 @@ class PageContentContainer extends Component {
                 },
                 {
                     name: "Calculator",
-                    desc: <p>Simple calculator like the one in iPhone<br/>Auto text scaling method is reference from
-                        codepen calculator project. Link: <a
-                            href="https://codepen.io/mjijackson/pen/xOzyGX">codepen calculator →</a>
+                    desc: <div><p>Simple calculator like the one in iPhone<br/>Auto text scaling method is reference
+                        from codepen calculator project. Link: <a href="https://codepen.io/mjijackson/pen/xOzyGX">codepen
+                            calculator →</a></p>
                         <hr/>
-                        <b>Notes:</b><br/>18/06/2021 : Optimized calculator keys with React.memo() enclosed to prevent
-                        unnecessary
-                        re-rendering when each keys were pressed.</p>,
+                        <p><b>Notes:</b><br/>18/06/2021 : Optimized calculator keys with React.memo() enclosed to
+                            prevent unnecessary re-rendering when each keys were pressed.</p></div>,
                     lastUpdate: "15/06/2021",
                     size: "col-xl-6 col-lg-6",
                     playground: <Calculator/>

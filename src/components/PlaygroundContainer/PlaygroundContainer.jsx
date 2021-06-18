@@ -5,6 +5,30 @@ class PlaygroundContainer extends Component {
         notesToggle: false
     };
 
+    // Below is way to cache data in browser using localstorage
+    // May not needed in this stage
+    // // Cache status
+    // componentDidMount() {
+    //     const item = localStorage.getItem(this.props.name);
+    //     if (item) {
+    //         const itemObject = JSON.parse(item);
+    //         const toggled = itemObject.notesToggle
+    //         console.log(toggled);
+    //         if (toggled !== this.state.notesToggle) {
+    //             this.setState({
+    //                 notesToggle: toggled
+    //             })
+    //         }
+    //     }
+    //     localStorage.setItem(this.props.name, JSON.stringify( {"notesToggle": this.state.notesToggle}));
+    //     console.log("[PlaygroundContainer.js] ", this.props.name);
+    // }
+    //
+    // // Cache status when updated
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     localStorage.setItem(this.props.name, JSON.stringify(this.state));
+    // }
+
     _notesToggleHandler = (e) => {
         if (e.target.className.includes("active")) {
             return;
