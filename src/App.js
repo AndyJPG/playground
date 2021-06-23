@@ -18,6 +18,14 @@ class App extends Component {
         })
     };
 
+    componentDidMount() {
+        if (window.innerWidth < 768) {
+            this.setState({
+                sidebarToggled: true
+            })
+        }
+    }
+
     render() {
         return (
             <div id="wrapper">
