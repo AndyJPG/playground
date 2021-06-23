@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+            <button onClick={props.sidebarToggleHandler} id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                 <i className="fa fa-bars"/>
             </button>
 
@@ -16,4 +16,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default React.memo(Navbar);

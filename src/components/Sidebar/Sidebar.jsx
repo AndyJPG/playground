@@ -1,38 +1,39 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 
-const Sidebar = (props) => {
+class Sidebar extends PureComponent {
 
-    const sidebarClasses = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion";
+    render() {
+        return (
+            <ul className={"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " + (this.props.sidebarToggled ? "toggled" : "")} id="accordionSidebar">
+                <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                    <div className="sidebar-brand-icon rotate-n-15">
+                        <i className="fas fa-laugh-wink"/>
+                    </div>
+                    <div className="sidebar-brand-text mx-3">ANDY'S PLAYGROUND</div>
+                </a>
 
-    return (
-        <ul className={sidebarClasses} id="accordionSidebar">
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div className="sidebar-brand-icon rotate-n-15">
-                    <i className="fas fa-laugh-wink"/>
+                <hr className="sidebar-divider my-0"/>
+
+                <li className="nav-item active">
+                    <a className="nav-link" href="/">
+                        <i className="fas fa-fw fa-umbrella-beach"/>
+                        <span>Playground</span></a>
+                </li>
+
+                <div className="text-center d-none d-md-inline">
+                    <button
+                        onClick={this.props.sidebarToggleHandler}
+                        className="rounded-circle border-0"
+                        id="sidebarToggle"/>
                 </div>
-                <div className="sidebar-brand-text mx-3">ANDY'S PLAYGROUND</div>
-            </a>
 
-            <hr className="sidebar-divider my-0"/>
-
-            <li className="nav-item active">
-                <a className="nav-link" href="/">
-                    <i className="fas fa-fw fa-umbrella-beach"/>
-                    <span>Playground</span></a>
-            </li>
-
-            <div className="text-center d-none d-md-inline">
-                <button
-                    className="rounded-circle border-0"
-                    id="sidebarToggle"/>
-            </div>
-
-            <div className="sidebar-card d-none d-lg-flex">
-                <i className="fas fa-wrench fa-2x"/>
-                <p className="text-center mb-2"><strong>This site is under construction</strong></p>
-            </div>
-        </ul>
-    );
+                <div className="sidebar-card d-none d-lg-flex">
+                    <i className="fas fa-wrench fa-2x"/>
+                    <p className="text-center mb-2"><strong>This site is under construction</strong></p>
+                </div>
+            </ul>
+        );
+    };
 };
 
 export default Sidebar;

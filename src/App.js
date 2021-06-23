@@ -6,13 +6,35 @@ import PageContentContainer from "./components/PageContentContainer/PageContentC
 
 class App extends Component {
 
+    state = {
+        sidebarToggled: false
+    };
+
+    _sidebarToggleHandler = () => {
+        const sidebarToggled = this.state.sidebarToggled;
+
+        this.setState({
+            sidebarToggled: !sidebarToggled
+        })
+    };
+
+    componentDidMount() {
+        if (window.innerWidth < 768) {
+            this.setState({
+                sidebarToggled: true
+            })
+        }
+    }
+
     render() {
         return (
             <div id="wrapper">
-                <Sidebar />
+                <Sidebar
+                    sidebarToggled={this.state.sidebarToggled}
+                    sidebarToggleHandler={this._sidebarToggleHandler} />
                 <div id="content-wrapper" className="d-flex flex-column">
                     <div id="content">
-                        <Navbar />
+                        <Navbar sidebarToggleHandler={this._sidebarToggleHandler} />
                         <PageContentContainer/>
                     </div>
                 </div>
