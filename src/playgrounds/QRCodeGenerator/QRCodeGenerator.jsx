@@ -28,10 +28,22 @@ class QRCodeGenerator extends React.Component<Props, State> {
         });
     }
 
+    _textAreaOnchangeHandler: function = (e: SyntheticEvent<HTMLButtonElement>): void => {
+        this.setState({
+            message: e.currentTarget.value
+        })
+    };
+
+    _qrCodeGenerateOnclickHandler: function = (): void => {
+        //TODO: implement generate handler
+    };
+
     render(): React.Node {
         return (
             <div>
-                <TextArea message={this.state.message}/>
+                <TextArea
+                    onchangeHandler={this._textAreaOnchangeHandler}
+                    message={this.state.message}/>
                 <DisplayCanvas qrCodeUrl={this.state.qrCodeUrl}/>
             </div>
         );

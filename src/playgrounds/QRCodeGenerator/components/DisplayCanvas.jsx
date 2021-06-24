@@ -5,12 +5,15 @@ type Props = {
     qrCodeUrl: ?string
 };
 
-const displayCanvas = (props: Props): React.Node => {
-    return (
-        <div>
-            {props.qrCodeUrl ? <img src={props.qrCodeUrl} alt="QR code"/> : null}
-        </div>
-    );
-};
+class displayCanvas extends React.PureComponent<Props> {
+    render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
+        return (
+            <div>
+                {this.props.qrCodeUrl ? <img src={this.props.qrCodeUrl} alt="QR code"/> : null}
+            </div>
+        );
+    }
+}
 
+// TODO: work out how to implement React memo
 export default displayCanvas;
