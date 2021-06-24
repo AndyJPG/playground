@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import TicTacToe from "../../playgrounds/TicTacToe/TicTacToe";
 import Calculator from "../../playgrounds/Calculator/Calculator";
 import EmojiSearch from "../../playgrounds/EmojiSearch/EmojiSearch";
+import QRCodeGenerator from "../../playgrounds/QRCodeGenerator/QRCodeGenerator";
 
 // Components
 import PlaygroundsContainer from "../PlaygroundsContainer/PlaygroundsContainer";
@@ -14,6 +15,13 @@ class PageContentContainer extends Component {
         super(props);
         this.state = {
             playgrounds: [
+                {
+                    name: "QR Code Generator",
+                    desc: <p>QR Code Generator</p>,
+                    lastUpdate: "25/06/2021",
+                    size: "col-xl-6 col-lg-6",
+                    playground: <QRCodeGenerator/>
+                },
                 {
                     name: "Emoji Search",
                     desc: <p>Search emoji with words like Love or Smiling<br/>This emoji search tool uses API provided
