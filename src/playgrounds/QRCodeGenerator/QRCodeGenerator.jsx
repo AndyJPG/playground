@@ -2,23 +2,24 @@
 import * as React from 'react';
 import * as QRCode from 'qrcode';
 import DisplayCanvas from "./components/DisplayCanvas";
+import TextArea from "./components/Textarea";
 
 type Props = {};
 
 type State = {
-    count: number,
+    message: string,
     qrCodeUrl: ?string
 };
 
 class QRCodeGenerator extends React.Component<Props, State> {
 
     state: State = {
-        count: 0,
+        message: "",
         qrCodeUrl: null
     };
 
     componentDidMount() {
-        QRCode.toDataURL("Hello Would!", (err, url) => {
+        QRCode.toDataURL("test", (err, url) => {
             if (!err) {
                 this.setState({
                     qrCodeUrl: url
@@ -27,14 +28,10 @@ class QRCodeGenerator extends React.Component<Props, State> {
         });
     }
 
-    _needANumber: function = (digit: number): string => {
-        return digit.toString();
-    };
-
     render(): React.Node {
         return (
             <div>
-                QR Code Generator {this._needANumber(this.state.count)}
+                <TextArea message={this.state.message}/>
                 <DisplayCanvas qrCodeUrl={this.state.qrCodeUrl}/>
             </div>
         );
