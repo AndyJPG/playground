@@ -1,9 +1,12 @@
 // @flow
 import * as React from "react";
+import Spinner from "../../EmojiSearch/components/Spinner";
 
 type Props = {
     message: string,
-    onchangeHandler: (e: SyntheticEvent<HTMLButtonElement>) => void
+    loading: boolean,
+    onchangeHandler: (e: SyntheticEvent<HTMLButtonElement>) => void,
+    generateQRCodeOnclickHandler: () => void
 };
 
 const textArea = (props: Props): React.Node => {
@@ -16,7 +19,10 @@ const textArea = (props: Props): React.Node => {
                 onChange={props.onchangeHandler}
                 value={props.message}/>
             <br/>
-            <button className="btn btn-primary">Generate QRCode</button>
+            <button
+                onClick={props.generateQRCodeOnclickHandler}
+                className="btn btn-primary">Generate QRCode</button>
+            {props.loading ? <Spinner/> : null}
         </div>
     );
 };
